@@ -26,8 +26,34 @@ $(function() {
 		});
 	};
 	
+//ask-answer
 	$('.head-ask').click(function(){
 		$(this).toggleClass('active').next().toggle();
 	})
+	
+//menu
+	$('.menu-tt a').click(function(){
+		$(this).parent().toggleClass('active');
+		$('.menu-top').toggle()
+		return false;
+	});
+
+	$('.head-nav-mob').click(function(){
+		$(this).next().toggle()
+		return false;
+	});
+	
+	$('.nav-for-mob ul li a').click(function(){
+		var text_li = $(this).text();
+		$('.head-nav-mob').text(text_li);
+		$(this).parent().parent().hide();
+		return false;
+	});
+	
+	$(document).click(function(event) {
+	    if ($(event.target).closest('.head-nav-mob').length) return;
+	    $('.nav-for-mob ul').hide();
+	    event.stopPropagation();
+	});	
 });
 
